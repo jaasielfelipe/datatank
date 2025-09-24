@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BCB Exchange Rate Explorer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Banco Central do Brasil – PTAX Explorer</h1>
+        <p>
+          Explore historical U.S. Dollar quotations directly from the Banco Central do Brasil
+          (Olinda) service. Choose a date range and click <strong>Load data</strong> to fetch the
+          official PTAX rates.
+        </p>
+      </header>
+
+      <section class="controls">
+        <form id="search-form">
+          <div class="field">
+            <label for="start-date">Start date</label>
+            <input id="start-date" name="start-date" type="date" required />
+          </div>
+          <div class="field">
+            <label for="end-date">End date</label>
+            <input id="end-date" name="end-date" type="date" required />
+          </div>
+          <button type="submit">Load data</button>
+        </form>
+        <p id="status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="results" aria-live="polite">
+        <table id="results-table" hidden>
+          <thead>
+            <tr>
+              <th scope="col">Timestamp</th>
+              <th scope="col">Buy price</th>
+              <th scope="col">Sell price</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+  </body>
+</html>
